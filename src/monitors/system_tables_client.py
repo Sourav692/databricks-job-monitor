@@ -39,7 +39,9 @@ class SystemTablesClient:
                 self.sql_connection = sql.connect(
                     server_hostname=hostname,
                     http_path=f'/sql/1.0/warehouses/{self.config.warehouse_id}',
-                    access_token=self.config.token
+                    access_token=self.config.token,
+                    _tls_no_verify=True,
+                    _tls_verify_hostname=False
                 )
                 self.logger.info("SQL connection established successfully")
             else:

@@ -1,7 +1,7 @@
 from typing import Dict, List, Any
 import pandas as pd
 from datetime import datetime
-from .base_monitor import BaseMonitor
+from base_monitor import BaseMonitor
 
 
 class ClusterMonitor(BaseMonitor):

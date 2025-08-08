@@ -281,3 +281,137 @@
 2025-08-08 02:28:04,903 - databricks.sql.auth.thrift_http_client - INFO - HTTP Response with status code 200, message: OK
 2025-08-08 02:28:04,903 - src.monitors.system_tables_client - INFO - SQL connection closed
 2025-08-08 02:28:04,904 - __main__ - INFO - [SUCCESS] Monitoring completed successfully!
+2025-08-08 13:00:47,180 - __main__ - INFO - Starting Databricks job monitoring...
+2025-08-08 13:00:47,181 - __main__ - INFO - Running in local environment
+2025-08-08 13:00:47,181 - __main__ - INFO - Host: https://e2-demo-west.cloud.databricks.com/
+2025-08-08 13:00:47,181 - __main__ - INFO - Warehouse ID: 75fd8278393d07eb
+2025-08-08 13:00:48,516 - databricks.sql.auth.retry - INFO - Received status code 200 for POST request
+2025-08-08 13:00:48,517 - databricks.sql.auth.thrift_http_client - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 13:00:48,518 - databricks.sql.client - INFO - Successfully opened session 01f07429-9a92-14e6-86e4-04489734480d
+2025-08-08 13:00:48,518 - src.monitors.system_tables_client - INFO - SQL connection established successfully
+2025-08-08 13:00:49,011 - databricks.sql.auth.retry - INFO - Received status code 200 for POST request
+2025-08-08 13:00:49,011 - databricks.sql.auth.thrift_http_client - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 13:00:49,034 - __main__ - INFO - [SUCCESS] Connection test successful!
+2025-08-08 13:00:49,034 - __main__ - INFO - Checking for available job data...
+2025-08-08 13:00:49,034 - src.monitors.system_tables_client - INFO - Executing query: 
+        SELECT 
+            workspace_id,
+            job_id,
+            COUNT(DISTINCT run_id) as...
+2025-08-08 13:00:54,578 - databricks.sql.auth.retry - INFO - Received status code 200 for POST request
+2025-08-08 13:00:54,578 - databricks.sql.auth.thrift_http_client - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 13:00:59,235 - databricks.sql.auth.retry - INFO - Received status code 200 for POST request
+2025-08-08 13:00:59,236 - databricks.sql.auth.thrift_http_client - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 13:01:00,071 - src.monitors.system_tables_client - ERROR - Query execution failed: Request failed during streaming response with error message [traceId=afaf58565d7c15d4ec67396707d88896]com.databricks.api.base.DatabricksServiceException: TEMPORARILY_UNAVAILABLE: DS_NETWORK_ERROR: Network error for ProxyQueryTable due to java.io.InterruptedIOException, please retry.[Trace Id: afaf58565d7c15d4ec67396707d88896]
+2025-08-08 13:01:00,073 - __main__ - INFO - Checking job timeline table structure...
+2025-08-08 13:01:00,073 - src.monitors.system_tables_client - INFO - Executing query: DESCRIBE system.lakeflow.job_run_timeline...
+2025-08-08 13:01:00,996 - databricks.sql.auth.retry - INFO - Received status code 200 for POST request
+2025-08-08 13:01:00,997 - databricks.sql.auth.thrift_http_client - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 13:01:01,005 - src.monitors.system_tables_client - INFO - Query returned 13 rows
+2025-08-08 13:01:01,008 - src.monitors.system_tables_client - INFO - Executing query: 
+        SELECT 
+            DATE(period_start_time) as job_date,
+            COUNT(DISTINCT job_id)...
+2025-08-08 13:01:06,373 - databricks.sql.auth.retry - INFO - Received status code 200 for POST request
+2025-08-08 13:01:06,374 - databricks.sql.auth.thrift_http_client - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 13:01:10,713 - databricks.sql.auth.retry - INFO - Received status code 200 for POST request
+2025-08-08 13:01:10,714 - databricks.sql.auth.thrift_http_client - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 13:01:10,995 - src.monitors.system_tables_client - ERROR - Query execution failed: Request failed during streaming response with error message [traceId=4335330953d0b32ae770b6019402e50c]com.databricks.api.base.DatabricksServiceException: TEMPORARILY_UNAVAILABLE: DS_NETWORK_ERROR: Network error for ProxyQueryTable due to java.io.InterruptedIOException, please retry.[Trace Id: 4335330953d0b32ae770b6019402e50c]
+2025-08-08 13:01:10,997 - __main__ - INFO - Fetching comprehensive job metrics...
+2025-08-08 13:01:10,997 - src.monitors.job_monitor - INFO - Fetching job runtime metrics for last 7 days...
+2025-08-08 13:01:10,997 - src.monitors.system_tables_client - INFO - Executing query: 
+        WITH job_run_duration AS (
+            SELECT 
+                workspace_id,
+              ...
+2025-08-08 13:01:16,565 - databricks.sql.auth.retry - INFO - Received status code 200 for POST request
+2025-08-08 13:01:16,565 - databricks.sql.auth.thrift_http_client - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 13:01:21,897 - databricks.sql.auth.retry - INFO - Received status code 200 for POST request
+2025-08-08 13:01:21,897 - databricks.sql.auth.thrift_http_client - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 13:01:22,512 - databricks.sql.auth.retry - INFO - Received status code 200 for POST request
+2025-08-08 13:01:22,513 - databricks.sql.auth.thrift_http_client - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 13:01:22,838 - databricks.sql.auth.retry - INFO - Received status code 200 for POST request
+2025-08-08 13:01:22,838 - databricks.sql.auth.thrift_http_client - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 13:01:23,165 - databricks.sql.auth.retry - INFO - Received status code 200 for POST request
+2025-08-08 13:01:23,166 - databricks.sql.auth.thrift_http_client - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 13:01:25,820 - databricks.sql.auth.retry - INFO - Received status code 200 for POST request
+2025-08-08 13:01:25,821 - databricks.sql.auth.thrift_http_client - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 13:01:25,834 - src.monitors.system_tables_client - INFO - Query returned 2987 rows
+2025-08-08 13:01:25,835 - src.monitors.job_monitor - INFO - Analyzing job failures...
+2025-08-08 13:01:25,835 - src.monitors.system_tables_client - INFO - Executing query: 
+        WITH job_runs AS (
+            SELECT DISTINCT
+                jrt.workspace_id,
+          ...
+2025-08-08 13:01:31,190 - databricks.sql.auth.retry - INFO - Received status code 200 for POST request
+2025-08-08 13:01:31,191 - databricks.sql.auth.thrift_http_client - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 13:01:35,528 - databricks.sql.auth.retry - INFO - Received status code 200 for POST request
+2025-08-08 13:01:35,529 - databricks.sql.auth.thrift_http_client - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 13:01:35,844 - databricks.sql.auth.retry - INFO - Received status code 200 for POST request
+2025-08-08 13:01:35,845 - databricks.sql.auth.thrift_http_client - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 13:01:36,178 - databricks.sql.auth.retry - INFO - Received status code 200 for POST request
+2025-08-08 13:01:36,179 - databricks.sql.auth.thrift_http_client - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 13:01:37,407 - databricks.sql.auth.retry - INFO - Received status code 200 for POST request
+2025-08-08 13:01:37,408 - databricks.sql.auth.thrift_http_client - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 13:01:37,417 - src.monitors.system_tables_client - INFO - Query returned 2986 rows
+2025-08-08 13:01:37,417 - src.monitors.job_monitor - INFO - Fetching cluster utilization metrics...
+2025-08-08 13:01:37,417 - src.monitors.system_tables_client - INFO - Executing query: 
+        SELECT 
+            cluster_id,
+            driver,
+            COUNT(*) as data_points,
+  ...
+2025-08-08 13:01:41,597 - databricks.sql.auth.retry - INFO - Received status code 200 for POST request
+2025-08-08 13:01:41,597 - databricks.sql.auth.thrift_http_client - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 13:01:41,602 - src.monitors.system_tables_client - INFO - Query returned 20 rows
+2025-08-08 13:01:41,959 - __main__ - INFO - Generating monitoring report...
+2025-08-08 13:01:41,959 - src.monitors.job_monitor - INFO - Fetching job runtime metrics for last 7 days...
+2025-08-08 13:01:41,959 - src.monitors.system_tables_client - INFO - Executing query: 
+        WITH job_run_duration AS (
+            SELECT 
+                workspace_id,
+              ...
+2025-08-08 13:01:47,316 - databricks.sql.auth.retry - INFO - Received status code 200 for POST request
+2025-08-08 13:01:47,316 - databricks.sql.auth.thrift_http_client - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 13:01:51,277 - databricks.sql.auth.retry - INFO - Received status code 200 for POST request
+2025-08-08 13:01:51,278 - databricks.sql.auth.thrift_http_client - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 13:01:51,606 - databricks.sql.auth.retry - INFO - Received status code 200 for POST request
+2025-08-08 13:01:51,606 - databricks.sql.auth.thrift_http_client - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 13:01:52,213 - databricks.sql.auth.retry - INFO - Received status code 200 for POST request
+2025-08-08 13:01:52,214 - databricks.sql.auth.thrift_http_client - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 13:01:53,443 - databricks.sql.auth.retry - INFO - Received status code 200 for POST request
+2025-08-08 13:01:53,444 - databricks.sql.auth.thrift_http_client - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 13:01:53,454 - src.monitors.system_tables_client - INFO - Query returned 2987 rows
+2025-08-08 13:01:53,455 - src.monitors.job_monitor - INFO - Analyzing job failures...
+2025-08-08 13:01:53,455 - src.monitors.system_tables_client - INFO - Executing query: 
+        WITH job_runs AS (
+            SELECT DISTINCT
+                jrt.workspace_id,
+          ...
+2025-08-08 13:01:58,806 - databricks.sql.auth.retry - INFO - Received status code 200 for POST request
+2025-08-08 13:01:58,807 - databricks.sql.auth.thrift_http_client - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 13:02:02,999 - databricks.sql.auth.retry - INFO - Received status code 200 for POST request
+2025-08-08 13:02:03,000 - databricks.sql.auth.thrift_http_client - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 13:02:03,315 - databricks.sql.auth.retry - INFO - Received status code 200 for POST request
+2025-08-08 13:02:03,317 - databricks.sql.auth.thrift_http_client - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 13:02:03,651 - databricks.sql.auth.retry - INFO - Received status code 200 for POST request
+2025-08-08 13:02:03,652 - databricks.sql.auth.thrift_http_client - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 13:02:04,961 - databricks.sql.auth.retry - INFO - Received status code 200 for POST request
+2025-08-08 13:02:04,962 - databricks.sql.auth.thrift_http_client - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 13:02:04,969 - src.monitors.system_tables_client - INFO - Query returned 2986 rows
+2025-08-08 13:02:04,970 - src.monitors.job_monitor - INFO - Fetching cluster utilization metrics...
+2025-08-08 13:02:04,970 - src.monitors.system_tables_client - INFO - Executing query: 
+        SELECT 
+            cluster_id,
+            driver,
+            COUNT(*) as data_points,
+  ...
+2025-08-08 13:02:08,843 - databricks.sql.auth.retry - INFO - Received status code 200 for POST request
+2025-08-08 13:02:08,843 - databricks.sql.auth.thrift_http_client - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 13:02:08,848 - src.monitors.system_tables_client - INFO - Query returned 20 rows
+2025-08-08 13:02:08,947 - __main__ - INFO - [SUCCESS] Monitoring report saved to: job_monitoring_report_20250808_130208.md
+2025-08-08 13:02:08,948 - databricks.sql.client - INFO - Closing session 01f07429-9a92-14e6-86e4-04489734480d
+2025-08-08 13:02:09,289 - databricks.sql.auth.retry - INFO - Received status code 200 for POST request
+2025-08-08 13:02:09,289 - databricks.sql.auth.thrift_http_client - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 13:02:09,291 - src.monitors.system_tables_client - INFO - SQL connection closed
+2025-08-08 13:02:09,291 - __main__ - INFO - [SUCCESS] Monitoring completed successfully!

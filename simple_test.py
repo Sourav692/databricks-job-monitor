@@ -45,14 +45,14 @@ try:
     if client.test_connection():
         print("✅ Connection test successful!")
         
-        # Try to get available schemas
-        print("Getting available schemas...")
-        schemas = client.get_available_schemas()
-        if not schemas.empty:
-            print("✅ Available system schemas:")
-            print(schemas.to_string(index=False))
-        else:
-            print("⚠️ No schemas found or access denied")
+        # # Try to get available schemas
+        # print("Getting available schemas...")
+        # schemas = client.get_available_schemas()
+        # if not schemas.empty:
+        #     print("✅ Available system schemas:")
+        #     print(schemas.to_string(index=False))
+        # else:
+        #     print("⚠️ No schemas found or access denied")
             
         # Try a simple query
         print("Testing simple query...")
