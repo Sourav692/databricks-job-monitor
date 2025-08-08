@@ -1,0 +1,74 @@
+2025-08-08 02:09:39,963 - INFO - Starting Databricks Job Monitoring...
+2025-08-08 02:09:39,964 - INFO - Establishing database connection...
+2025-08-08 02:09:41,672 - INFO - Received status code 200 for POST request
+2025-08-08 02:09:41,673 - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 02:09:41,673 - INFO - Successfully opened session 01f073ce-a55e-110a-beb7-3b2d494cabca
+2025-08-08 02:09:41,698 - INFO - Fetching job runtime metrics...
+2025-08-08 02:09:41,698 - INFO - Executing Job Runtime Metrics...
+2025-08-08 02:09:44,824 - INFO - Received status code 200 for POST request
+2025-08-08 02:09:44,824 - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 02:09:44,825 - ERROR - Job Runtime Metrics failed: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column, variable, or function parameter with name `job_name` cannot be resolved. Did you mean one of the following? [`job_id`, `name`, `run_as`, `tags`, `change_time`]. SQLSTATE: 42703; line 19 pos 12
+2025-08-08 02:09:44,828 - INFO - Fetching job failure analysis...
+2025-08-08 02:09:44,828 - INFO - Executing Job Failure Analysis...
+2025-08-08 02:09:46,413 - INFO - Received status code 200 for POST request
+2025-08-08 02:09:46,413 - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 02:09:46,415 - ERROR - Job Failure Analysis failed: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column, variable, or function parameter with name `job_name` cannot be resolved. Did you mean one of the following? [`job_id`, `name`, `run_as`, `tags`, `change_time`]. SQLSTATE: 42703; line 16 pos 12
+2025-08-08 02:09:46,416 - INFO - Fetching cluster utilization...
+2025-08-08 02:09:46,416 - INFO - Executing Cluster Utilization...
+2025-08-08 02:09:49,880 - INFO - Received status code 200 for POST request
+2025-08-08 02:09:49,881 - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 02:09:49,899 - INFO - Cluster Utilization returned 0 rows
+2025-08-08 02:09:49,900 - INFO - Fetching recent job activity...
+2025-08-08 02:09:49,901 - INFO - Executing Recent Job Activity...
+2025-08-08 02:09:55,324 - INFO - Received status code 200 for POST request
+2025-08-08 02:09:55,324 - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 02:10:00,294 - INFO - Received status code 200 for POST request
+2025-08-08 02:10:00,294 - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 02:10:00,590 - INFO - Received status code 200 for POST request
+2025-08-08 02:10:00,590 - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 02:10:00,879 - INFO - Received status code 200 for POST request
+2025-08-08 02:10:00,879 - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 02:10:01,218 - INFO - Received status code 200 for POST request
+2025-08-08 02:10:01,218 - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 02:10:01,219 - INFO - Recent Job Activity returned 1 rows
+2025-08-08 02:10:01,229 - INFO - Closing session 01f073ce-a55e-110a-beb7-3b2d494cabca
+2025-08-08 02:10:01,533 - INFO - Received status code 200 for POST request
+2025-08-08 02:10:01,533 - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 02:17:59,899 - INFO - Starting Databricks Job Monitoring...
+2025-08-08 02:17:59,899 - INFO - Establishing database connection...
+2025-08-08 02:18:01,522 - INFO - Received status code 200 for POST request
+2025-08-08 02:18:01,522 - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 02:18:01,523 - INFO - Successfully opened session 01f073cf-cf51-13c2-a8f4-0ac7754beebb
+2025-08-08 02:18:01,530 - INFO - Fetching job runtime metrics...
+2025-08-08 02:18:01,530 - INFO - Executing Job Runtime Metrics...
+2025-08-08 02:18:04,599 - INFO - Received status code 200 for POST request
+2025-08-08 02:18:04,599 - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 02:18:04,601 - ERROR - Job Runtime Metrics failed: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column, variable, or function parameter with name `job_name` cannot be resolved. Did you mean one of the following? [`job_id`, `name`, `run_as`, `tags`, `change_time`]. SQLSTATE: 42703; line 19 pos 12
+2025-08-08 02:18:04,604 - INFO - Fetching job failure analysis...
+2025-08-08 02:18:04,604 - INFO - Executing Job Failure Analysis...
+2025-08-08 02:18:06,115 - INFO - Received status code 200 for POST request
+2025-08-08 02:18:06,115 - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 02:18:06,116 - ERROR - Job Failure Analysis failed: [UNRESOLVED_COLUMN.WITH_SUGGESTION] A column, variable, or function parameter with name `job_name` cannot be resolved. Did you mean one of the following? [`job_id`, `name`, `run_as`, `tags`, `change_time`]. SQLSTATE: 42703; line 16 pos 12
+2025-08-08 02:18:06,117 - INFO - Fetching cluster utilization...
+2025-08-08 02:18:06,117 - INFO - Executing Cluster Utilization...
+2025-08-08 02:18:09,197 - INFO - Received status code 200 for POST request
+2025-08-08 02:18:09,198 - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 02:18:09,225 - INFO - Cluster Utilization returned 0 rows
+2025-08-08 02:18:09,225 - INFO - Fetching recent job activity...
+2025-08-08 02:18:09,226 - INFO - Executing Recent Job Activity...
+2025-08-08 02:18:14,557 - INFO - Received status code 200 for POST request
+2025-08-08 02:18:14,558 - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 02:18:19,848 - INFO - Received status code 200 for POST request
+2025-08-08 02:18:19,848 - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 02:18:20,257 - INFO - Received status code 200 for POST request
+2025-08-08 02:18:20,257 - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 02:18:20,553 - INFO - Received status code 200 for POST request
+2025-08-08 02:18:20,554 - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 02:18:20,914 - INFO - Received status code 200 for POST request
+2025-08-08 02:18:20,915 - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 02:18:21,235 - INFO - Received status code 200 for POST request
+2025-08-08 02:18:21,236 - INFO - HTTP Response with status code 200, message: OK
+2025-08-08 02:18:21,238 - INFO - Recent Job Activity returned 2 rows
+2025-08-08 02:18:21,252 - INFO - Closing session 01f073cf-cf51-13c2-a8f4-0ac7754beebb
+2025-08-08 02:18:21,546 - INFO - Received status code 200 for POST request
+2025-08-08 02:18:21,546 - INFO - HTTP Response with status code 200, message: OK
