@@ -45,7 +45,7 @@ def monitor_clusters():
             avg_cpu = cluster_data['avg_cpu_utilization'].mean()
             max_cpu = cluster_data['peak_cpu_utilization'].max()
             avg_memory = cluster_data['avg_memory_utilization'].mean()
-            max_memory = cluster_data['peak_memory_utilization'].max()
+            max_memory = cluster_data['max_memory_utilization'].max()
             
             print(f"\nSummary for {label}:")
             print(f"  Average CPU Utilization: {avg_cpu:.2f}%")

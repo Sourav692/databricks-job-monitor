@@ -1,7 +1,7 @@
 from typing import Dict, List, Any
 import pandas as pd
 from datetime import datetime
-from base_monitor import BaseMonitor
+from .base_monitor import BaseMonitor
 
 
 class ClusterMonitor(BaseMonitor):
@@ -40,8 +40,9 @@ class ClusterMonitor(BaseMonitor):
         SELECT 
             nt.cluster_id,
             c.cluster_name,
-            c.driver_node_type_id,
-            c.node_type_id,
+            /* columns vary by workspace; align to generic names */
+            c.driver_node_type    AS driver_node_type_id,
+            c.worker_node_type    AS node_type_id,
             nt.driver,
             nt.instance_id,
             AVG(nt.cpu_user_percent + nt.cpu_system_percent) as avg_cpu_utilization,
@@ -64,7 +65,7 @@ class ClusterMonitor(BaseMonitor):
             FROM system.compute.clusters
         ) c ON nt.cluster_id = c.cluster_id AND c.rn = 1
         WHERE nt.start_time >= date_add(now(), -{days})
-        GROUP BY nt.cluster_id, c.cluster_name, c.driver_node_type_id, c.node_type_id, nt.driver, nt.instance_id
+        GROUP BY nt.cluster_id, c.cluster_name, c.driver_node_type, c.worker_node_type, nt.driver, nt.instance_id
         ORDER BY avg_cpu_utilization DESC
         """
         return self.client.query_system_table(query)
@@ -73,13 +74,10 @@ class ClusterMonitor(BaseMonitor):
         """Get available node types and their specifications"""
         query = """
         SELECT 
-            node_type_id,
+            node_type                 AS node_type_id,
             memory_mb,
-            num_cores,
-            num_gpus,
-            instance_type_id,
-            is_io_cache_enabled,
-            category
+            core_count               AS num_cores,
+            gpu_count                AS num_gpus
         FROM system.compute.node_types
         ORDER BY num_cores, memory_mb
         """
