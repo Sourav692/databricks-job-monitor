@@ -12,6 +12,18 @@ from config.settings import DatabricksConfig, MonitoringConfig
 from src.monitors.system_tables_client import SystemTablesClient
 from src.monitors.job_monitor import JobMonitor
 
+def df_to_markdown(df):
+    if df is None or (hasattr(df, 'empty') and df.empty):
+        return "_No data available._"
+    try:
+        return df.to_markdown(index=False)
+    except Exception:
+        return "```\n" + df.to_string(index=False) + "\n```"
+
+def small_table(rows):
+    import pandas as _pd
+    return df_to_markdown(_pd.DataFrame(rows))
+
 def setup_logging():
     """Setup logging configuration with Windows-compatible encoding"""
     # Create a custom formatter that avoids unicode characters
