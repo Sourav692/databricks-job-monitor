@@ -163,22 +163,23 @@ class ClusterPerformanceAnalyzer:
         if not high_memory.empty:
             recommendations.append(f"MEMORY: {len(high_memory)} clusters with >90% memory usage need attention")
         
-        # Resource balance
-        imbalanced = df[abs(df['avg_cpu_utilization'] - df['avg_memory_utilization']) > 40]
+        # Resource balance (cluster-level, weighted by data_points)
+        cluster_weighted = (
+            df.groupby('cluster_id')
+              .apply(lambda g: pd.Series({
+                  'avg_cpu': (g['avg_cpu_utilization'] * g['data_points']).sum() / g['data_points'].sum(),
+                  'avg_mem': (g['avg_memory_utilization'] * g['data_points']).sum() / g['data_points'].sum()
+              }))
+              .reset_index()
+        )
+        imbalanced = cluster_weighted[(cluster_weighted['avg_cpu'] - cluster_weighted['avg_mem']).abs() > 40]
         if not imbalanced.empty:
-            recommendations.append(f"BALANCE: {len(imbalanced)} clusters show CPU/Memory imbalance")
+            recommendations.append(f"BALANCE: {len(imbalanced)} unique clusters show CPU/Memory imbalance")
         
         return recommendations if recommendations else ["System appears well-optimized"]
     
     def run_analysis(self):
-        """Run the complete cluster performance analysis"""
-        print_safe("="*80)
-        print_safe("CLUSTER PERFORMANCE ANALYSIS")
-        print_safe("="*80)
-        print(f"Analysis Period: {self.ANALYSIS_DAYS} days")
-        print(f"CPU Alert Threshold: {self.CPU_ALERT_THRESHOLD}%")
-        print(f"Memory Alert Threshold: {self.MEMORY_ALERT_THRESHOLD}%")
-        print_safe("-"*80)
+        """Run the complete cluster performance analysis with minimal console output"""
         
         # Check data availability
         if not self.get_available_cluster_data():
@@ -186,7 +187,6 @@ class ClusterPerformanceAnalyzer:
             return
         
         # Get cluster performance data
-        print_safe("Collecting cluster utilization data...")
         cluster_data = self.get_cluster_utilization_data(self.ANALYSIS_DAYS)
         
         if cluster_data.empty:
@@ -197,57 +197,28 @@ class ClusterPerformanceAnalyzer:
             print("  - System tables may not be fully populated yet")
             return
         
-        print_safe(f"Found utilization data for {len(cluster_data)} clusters")
         
         # Get basic cluster info
-        print_safe("Getting cluster information...")
         cluster_info = self.get_cluster_basic_info()
-        print_safe(f"Retrieved information for {len(cluster_info)} clusters")
         
-        # Display summary statistics
-        print_safe("\nPERFORMANCE SUMMARY")
-        print_safe("-"*50)
-        print(f"Clusters analyzed: {len(cluster_data)}")
-        print(f"Average CPU utilization: {cluster_data['avg_cpu_utilization'].mean():.2f}%")
-        print(f"Average memory utilization: {cluster_data['avg_memory_utilization'].mean():.2f}%")
-        print(f"Peak CPU utilization: {cluster_data['peak_cpu_utilization'].max():.2f}%")
-        print(f"Peak memory utilization: {cluster_data['peak_memory_utilization'].max():.2f}%")
         
         # Show top resource consumers
-        print_safe("\nTOP 5 CPU CONSUMERS")
-        print_safe("-"*50)
-        top_cpu = cluster_data.nlargest(5, 'avg_cpu_utilization')
-        for _, cluster in top_cpu.iterrows():
-            driver_type = "Driver" if cluster['driver'] else "Worker"
-            print(f"{cluster['cluster_id']} ({driver_type}): {cluster['avg_cpu_utilization']:.1f}% CPU, {cluster['avg_memory_utilization']:.1f}% Memory")
+        # Suppress listing top consumers in console
         
         # Show detailed data
-        print_safe("\nDETAILED CLUSTER METRICS")
-        print_safe("-"*80)
-        pd.set_option('display.max_columns', None)
-        pd.set_option('display.width', None)
-        print(cluster_data.to_string(index=False))
+        # Suppress detailed table printing
         
         # Analyze issues
-        print_safe("\nPERFORMANCE ANALYSIS")
-        print_safe("-"*50)
         issues = self.analyze_performance_issues(cluster_data)
-        for issue in issues:
-            print_safe(f"  {issue}")
         
         # Generate recommendations
-        print_safe("\nOPTIMIZATION RECOMMENDATIONS")
-        print_safe("-"*50)
         recommendations = self.generate_recommendations(cluster_data)
-        for rec in recommendations:
-            print_safe(f"  {rec}")
         
         # Save report
         self.save_report(cluster_data, cluster_info, issues, recommendations)
         
-        print_safe("\n" + "="*80)
-        print_safe("ANALYSIS COMPLETED")
-        print_safe("="*80)
+        # Minimal console output at end
+        print_safe("Cluster report generation completed.")
     
     def save_report(self, cluster_data, cluster_info, issues, recommendations):
         """Save analysis report as beautified Markdown in project_root/cluster_report"""
